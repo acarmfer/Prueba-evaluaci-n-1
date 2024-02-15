@@ -10,7 +10,7 @@ def descomponer_direccion_ip(ip):
 
 # Configurar el parser de argumentos
 parser = argparse.ArgumentParser(description='Descomponer una dirección IP en sus octetos.')
-parser.add_argument('direccion_ip', type=str, help='La dirección IP que se va a descomponer.')
+parser.add_argument('python Ejercicio5.py 192.168.1.1', type=str, help='La dirección IP que se va a descomponer.')
 
 # Analizar los argumentos de la línea de comandos
 args = parser.parse_args()
