@@ -1,20 +1,30 @@
-import argparse
+import ipaddress
 
 def descomponer_direccion_ip(ip):
-    # Dividir la dirección IP en sus octetos
     octetos = ip.split('.')
-    
-    # Mostrar cada octeto línea por línea
-    for octeto in octetos:
-        print(octeto)
+    return octetos
 
-# Configurar el parser de argumentos
-parser = argparse.ArgumentParser(description='Descomponer una dirección IP en sus octetos.')
-parser.add_argument('python Ejercicio5.py 192.168.1.1', type=str, help='La dirección IP que se va a descomponer.')
+def validar_direccion_ip(ip):
+    try:
+        ipaddress.ip_address(ip)
+        return True
+    except ValueError:
+        return False
 
-# Analizar los argumentos de la línea de comandos
-args = parser.parse_args()
+def pedir_direccion_ip():
+    while True:
+        ip = input("Introduce una dirección IP: ")
+        if validar_direccion_ip(ip):
+            return ip
+        else:
+            print("Dirección IP inválida. Inténtalo de nuevo.")
 
-# Llamar a la función para descomponer la dirección IP
-print("Descomposición de la dirección IP:")
-descomponer_direccion_ip(args.direccion_ip)
+# Pedir la dirección IP al usuario
+ip = pedir_direccion_ip()
+
+# Descomponer la dirección IP en sus octetos
+octetos = descomponer_direccion_ip(ip)
+
+# Mostrar cada octeto línea por línea
+for octeto in octetos:
+    print(octeto)
