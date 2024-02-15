@@ -1,11 +1,16 @@
+
+
 import re
+
+# Compilar la expresión regular
+patron = re.compile(r'(\d+)(.*)(\d+)')
 
 def formatear_receta(cadena):
     # Voltear la cadena
     cadena_volteada = cadena[::-1]
 
     # Extraer el nombre de la receta y el número de calorías
-    match = re.search(r'(\d+)(.*)(\d+)', cadena_volteada)
+    match = patron.search(cadena_volteada)
     if match:
         calorías = match.group(1)
         nombre_receta = match.group(2).strip()
